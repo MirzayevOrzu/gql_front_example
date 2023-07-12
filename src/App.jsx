@@ -9,6 +9,10 @@ import Navbar from './components/common/Navbar';
 import UserShow from './pages/Users/UserShow';
 import UserCreate from './pages/Users/UserCreate';
 import UserUpdate from './pages/Users/UserUpdate';
+import MeasurementCreate from './pages/Measurements/MeasurementCreate';
+import MeasurementsList from './pages/Measurements/MeasurementsList';
+import MeasurementShow from './pages/Measurements/MeasurementShow';
+import MeasurementUpdate from './pages/Measurements/MeasurementUpdate';
 
 function App() {
   return (
@@ -53,6 +57,38 @@ function App() {
             element={
               <ProtectedRoute>
                 <UserShow />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/measurements"
+            element={
+              <ProtectedRoute>
+                <MeasurementsList />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/measurements/create"
+            element={
+              <ProtectedRoute>
+                <MeasurementCreate />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/measurements/edit/:id"
+            element={
+              <ProtectedRoute>
+                <MeasurementUpdate />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/measurements/:id"
+            element={
+              <ProtectedRoute>
+                <MeasurementShow />
               </ProtectedRoute>
             }
           />

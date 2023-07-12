@@ -30,9 +30,9 @@ function Navbar() {
               </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">
-                Pricing
-              </a>
+              <Link to="/measurements" className="nav-link">
+                Measurements
+              </Link>
             </li>
             <li className="nav-item dropdown">
               <a
