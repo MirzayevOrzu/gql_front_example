@@ -13,7 +13,7 @@ const LOGIN = gql`
 function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [loginUser, { data, loading, error }] = useMutation(LOGIN);
+  const [loginUser, { loading, error }] = useMutation(LOGIN);
   const navigate = useNavigate();
 
   const disabled = !username || !password;
@@ -26,17 +26,15 @@ function Login() {
     return `Error: ${error.message}`;
   }
 
-  if (data) {
-    localStorage.setItem('x-token', data.login.token);
-    navigate('/');
-  }
-
   return (
     <div>
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          loginUser({ variables: { input: { username, password } } });
+          loginUser({ variables: { input: { username, password } } }).then(({ data }) => {
+            localStorage.setItem('x-token', data.login.token);
+            navigate('/');
+          });
         }}>
         <label>
           Username:
