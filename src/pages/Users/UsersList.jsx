@@ -1,13 +1,12 @@
 import { gql, useMutation, useQuery } from '@apollo/client';
 import { Link } from 'react-router-dom';
+import { CORE_COMMON_USER_FIELDS } from '../../graphql/fragments';
 
 const GET_USERS = gql`
+  ${CORE_COMMON_USER_FIELDS}
   query GetUsers {
     users {
-      id
-      first_name
-      last_name
-      username
+      ...CoreUserFields
     }
   }
 `;
